@@ -1,6 +1,6 @@
 const { config } = require('./output/config');
 
-config.backend.address = '0.0.0.0';
+config.backend.address = '127.0.0.1';
 config.backend.port = 8080;
 config.backend.avatarsDir = __dirname + '/avatars';
 
