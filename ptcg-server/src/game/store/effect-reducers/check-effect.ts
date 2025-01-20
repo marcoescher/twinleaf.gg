@@ -27,7 +27,14 @@ function findKoPokemons(store: StoreLike, state: State): PokemonItem[] {
     const player = state.players[i];
     player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (cardList, card, target) => {
       const checkHpEffect = new CheckHpEffect(player, cardList);
+
+      //console.log(`[findKoPokemons]: Calling reduceEffect for ${card.name} (Player ${player.id})`);
+      //console.log(`[findKoPokemons]: Before reduceEffect, checkHpEffect.hp = ${checkHpEffect.hp}`);
+
       store.reduceEffect(state, checkHpEffect);
+
+      //console.log(`[findKoPokemons]: After reduceEffect, checkHpEffect.hp = ${checkHpEffect.hp}`);
+      //console.log(`[findKoPokemons]: ${card.name} damage = ${cardList.damage}`);
 
       if (cardList.damage >= checkHpEffect.hp) {
         pokemons.push({ playerNum: i, cardList });
